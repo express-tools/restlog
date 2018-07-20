@@ -87,4 +87,4 @@ app.listen(3000, "localhost", () => {
 
 In Aws Athena...
 
-[athena]: https://github.com/luizamboni/api-logger/Screenshot.png "athena show aggregation"
+![athena query](https://raw.githubusercontent.com/luizamboni/api-logger/master/Screenshot.png "athena show aggregation")
