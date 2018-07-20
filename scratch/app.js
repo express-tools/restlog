@@ -32,7 +32,7 @@ app.use(ApiLogger({
   ]
 }))
 
-app.get("/api/v1/test", (req, res) => {
+app.get("/api/v1/test/:id", (req, res) => {
   setTimeout(() =>
     res.send({ msg: "ok" })
   , Math.random() * 1000)
@@ -45,6 +45,7 @@ app.put("/api/v1/test/:id", (req, res) => {
 })
 
 app.delete("/api/v1/test/:id", (req, res) => {
+
   setTimeout(() =>
     res.send({ msg: "ok" })
   , Math.random() * 3000)
@@ -52,7 +53,7 @@ app.delete("/api/v1/test/:id", (req, res) => {
 
 
 setInterval(() => 
-  axios.get("http://localhost:3000/api/v1/test")
+  axios.get("http://localhost:3000/api/v1/test/234")
 , 200)
 
 

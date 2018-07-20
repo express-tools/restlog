@@ -20,7 +20,7 @@ function decoreSend(req, res, extracts) {
       protocol
     } = req
 
-    const resource = `${method} ${hostname}${path}`
+    const resource = `${method} ${req.route.path}`
 
     const isJson = res._headers["content-type"] === "application/json"
     const data = (req.method !== "GET" && isJson && _.isString(body))
