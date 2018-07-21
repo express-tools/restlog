@@ -1,5 +1,5 @@
 
-![rest.log](https://raw.githubusercontent.com/luizamboni/api-logger/master/Logo3.jpg "logo")
+![rest.log](Logo3.jpg "logo")
 
 API Logger
 ===
@@ -90,4 +90,4 @@ app.listen(3000, "localhost", () => {
 
 In Aws Athena...
 
-![athena query](https://raw.githubusercontent.com/luizamboni/api-logger/master/Screenshot3.png "athena show aggregation")
+![athena query](Screenshot3.png "athena show aggregation")
