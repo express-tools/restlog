@@ -1,5 +1,5 @@
 
-![rest.log](https://raw.githubusercontent.com/luizamboni/api-logger/master/Logo2.jpeg "logo")
+![rest.log](https://raw.githubusercontent.com/luizamboni/api-logger/master/Logo3.jpeg "logo")
 
 API Logger
 ===
