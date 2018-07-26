@@ -8,6 +8,9 @@ Example to Log with aws firehose
 
 API Logger
 ===
+
+## Table of Contents
+
 * [Install and Prerequisites](##Install)
 * [How use it](##How-use-it)
   - Init middleware
@@ -20,8 +23,11 @@ API Logger
 
 
 
+## Install and Prerequisites
 
-## Install
+- node >= 6.x.x
+- express >= 4
+
 ```shell
 $ npm install restlog --save
 ```
@@ -74,9 +80,11 @@ app.use(restlog({
 
 ## Examples
 
+### Save logs in Aws Athena
+
 ```javascript
 
-const ApiLogger = require("../index")
+const restlog = require("restlog")
 const app = require("express")()
 const isBot = require("isbot")
 const flat = require("flat")
@@ -84,7 +92,7 @@ const flat = require("flat")
 const AWS = require("aws-sdk")
 const firehose = new AWS.Firehose({ apiVersion: "2015-08-04", region: "us-east-1" })
 
-app.use(ApiLogger({
+app.use(restlog({
 
   // Array of reject patterns in url
   rejectPatterns: [ /.ico/ ],
@@ -111,7 +119,6 @@ app.use(ApiLogger({
     // log in stdOut
     event => console.log(event),
     event => /* ... saves on mongoDB etc*/
-
   ]
 }))
 
@@ -154,14 +161,15 @@ app.listen(3000, "localhost", () => {
 })
 ```
 
-In Aws Athena...
+Afetr query in Aws Athena...
 
 ![athena query](Screenshot3.png "athena show aggregation")
+
 ## Notes
 * **Rest.log** was writen in 6.\x.\x node version and uses features available from this release.
 * **Rest.log** was writen to work with expressjs.
 
 ## Roadmap
-* refac code in modules
-* test coverage in 70%
+* Refac code in modules
+* Test coverage in 70%
 
