@@ -57,42 +57,43 @@ app.use(restlog({
 ```
 ### Event Schema
 
-Event JsonSchema
-```jsonSchema
-{
-  "url": String,
-  "resource": String,
-  "path": String,
-  "method": String,
-  "query": Object,
-  "hostname": String,
-  "protocol": String,
-  "userAgent": String,
-  "isoDate": String,
-  "milliseconds": Number,
-  "date": { 
-    "day": Number, 
-    "month": Number, 
-    "year": Number, 
-    "hour": Number, 
-    "minute": Number, 
-    "second": Number 
-  },
+JsonSchema
 
+```javascript
+{
+  "url": "string",
+  "resource": "string",
+  "path": "string",
+  "method": "string",
+  "query": "object",
+  "hostname": "string",
+  "protocol": "string",
+  "userAgent": "string",
+  "isoDate": "string",
+  "milliseconds": "number",
+  "date": { 
+    "day": "number", 
+    "month": "number", 
+    "year": "number", 
+    "hour": "number", 
+    "minute": "number", 
+    "second": "number" 
+  },
   "request": { 
-    "params": Object,
-    "query": Object,
-    "method": String,
-    "headers": Object,
-    "path": String,
-    "body": Object | String | undefined
+    "params": "object",
+    "query": "object",
+    "method": "string",
+    "headers": "object",
+    "path": "string",
+    "body": "object" | "string" | undefined
   },
   "response": {
-    "query": Object,
-    "headers": Object,
-    "body": Object | String | undefined,
+    "query": "object",
+    "headers": "object",
+    "body": "object" | "string" | undefined,
   }
 }
+
 ```
 Example:
 ```json
@@ -194,7 +195,7 @@ app.use(restlog({
       firehose.putRecord({
         DeliveryStreamName: 'test',
         Record: {
-          Data: [ JSON.stringify(flat(event)), "\n" ].join("")
+          Data: [ JSON."string"ify(flat(event)), "\n" ].join("")
         }
       }).promise()
       .then(res => console.log(res))
@@ -251,7 +252,7 @@ Afetr query in Aws Athena...
 ![athena query](Screenshot3.png "athena show aggregation")
 
 ## Notes
-* **Rest.log** was writen in 6.\x.\x node version and uses features available from this release.
+* **Rest.log** was writen in 6.x.x node version and uses features available from this release.
 * **Rest.log** was writen to work with expressjs.
 
 ## Roadmap
