@@ -2,22 +2,22 @@
 ![rest.log](Logo3.jpg "logo")
 
 
-Designed to help log request-response pair integrate with express middleware
-Example to Log with aws firehose
-
-
-API Logger
+Rest.log
 ===
+
+Rest.log is a Express.js middleware what expose the request-response pair in a format of events for porpouse to log or detect
+what happens in API, according with it API contract.
+
 
 ## Table of Contents
 
 * [Install and Prerequisites](#install-and-prerequisites)
 * [How use it](#how-use-it)
-  - Init middleware
-  - Event schema
+  - [Init middleware](#init-middleware)
+  - [Event schema](#event-schema)
 * [Examples](#examples)
-  - Detect creation of entity
-  - Aws Athena
+  - [Detect creation of entity](#detect-creation-or-updates-of-an-entity)
+  - [Save logs in Aws Athena](#save-logs-in-aws-athena)
 * [Notes](#notes)
 * [Roadmap](#roadmap)
 
@@ -141,7 +141,7 @@ Example:
 ```
 
 ## Examples
-### Detect creation of entity
+### Detect creation or updates of an entity
 
 ```javascript
 app.use(restlog({
