@@ -16,8 +16,8 @@ API Logger
   - Init middleware
   - Event schema
 * [Examples](##Examples)
+  - Detect creation of entity
   - Aws Athena
-  - Events
 * [Notes](##Notes)
 * [Roadmap](##Roadmap)
 
@@ -56,29 +56,114 @@ app.use(restlog({
 }))
 ```
 ### Event Schema
-```json
-{
-  "path": String,
-  "request": { 
 
+Event JsonSchema
+```jsonSchema
+{
+  "url": String,
+  "resource": String,
+  "path": String,
+  "method": String,
+  "query": Object,
+  "hostname": String,
+  "protocol": String,
+  "userAgent": String,
+  "isoDate": String,
+  "milliseconds": Number,
+  "date": { 
+    "day": Number, 
+    "month": Number, 
+    "year": Number, 
+    "hour": Number, 
+    "minute": Number, 
+    "second": Number 
+  },
+
+  "request": { 
+    "params": Object,
+    "query": Object,
+    "method": String,
+    "headers": Object,
+    "path": String,
+    "body": Object | String | undefined
   },
   "response": {
-
+    "query": Object,
+    "headers": Object,
+    "body": Object | String | undefined,
+  }
+}
+```
+Example:
+```json
+{
+  "url": "http://localhost:3000/api/v1/test/234",
+  "resource": "GET /api/v1/test/:id",
+  "path": "/api/v1/test/234",
+  "method": "GET",
+  "query": {},
+  "hostname": "localhost",
+  "protocol": "http",
+  "userAgent": "axios/0.18.0",
+  "isoDate": "2018-07-26T17:29:39.384Z",
+  "milliseconds": 162,
+  "date": { 
+    "day": 26, 
+    "month": 7, 
+    "year": 2018, 
+    "hour": 14, 
+    "minute": 29, 
+    "second": 39 
+  },
+  "request": { 
+    "params": { "id": "234" },
+    "query": {},
+    "method": "GET",
+    "headers": 
+     { 
+       "accept": "application/json, text/plain",
+       "user-agent": "axios/0.18.0",
+       "host": "localhost:3000",
+       "connection": "close"
+     },
+    "path": "/api/v1/test/234",
+    "body": "undefined" 
+  },
+  "response": { 
+    "readers": { 
+      "x-powered-by": 
+      "Express" 
+    },
+    "status": 200,
+    "body": null 
   }
 }
 ```
 
-* path
-* request
-  - headers
-  - body
-
-* response
-  - headers
-  - status
-  - body
-
 ## Examples
+### Detect creation of entity
+
+```javascript
+app.use(restlog({
+
+  // Array with each output of log desired
+  logIn: [
+    event => {
+      const { resource, response, request } = event
+
+      if(resource === "POST /api/v1/user/" && response.status === 201) {
+        const { name, id, email } = response
+        notifyUserCreationToOtherApi(id, { name, email })
+
+      } else if (resource === "PUT /api/v1/user/:id" && response.status === 200)) {
+        const { body: attrs, params } = request
+        notifyUserUpdateToOtherApi(id, attrs)
+
+      }
+    }
+  ]
+}))
+```
 
 ### Save logs in Aws Athena
 
