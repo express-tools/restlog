@@ -11,15 +11,15 @@ API Logger
 
 ## Table of Contents
 
-* [Install and Prerequisites](##Install-and-Prerequisites)
-* [How use it](##How-use-it)
+* [Install and Prerequisites](#Install-and-Prerequisites)
+* [How use it](#How-use-it)
   - Init middleware
   - Event schema
-* [Examples](##Examples)
+* [Examples](#Examples)
   - Detect creation of entity
   - Aws Athena
-* [Notes](##Notes)
-* [Roadmap](##Roadmap)
+* [Notes](#Notes)
+* [Roadmap](#Roadmap)
 
 
 
