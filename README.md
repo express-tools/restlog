@@ -11,7 +11,7 @@ API Logger
 
 ## Table of Contents
 
-* [Install and Prerequisites](##Install)
+* [Install and Prerequisites](##Install-and-Prerequisites)
 * [How use it](##How-use-it)
   - Init middleware
   - Event schema
@@ -34,7 +34,7 @@ $ npm install restlog --save
 
 ## How use it
 
-### Init Middleware
+### Init middleware
 ```javascript
 const app = require("express")()
 const restlog = require("restlog")
@@ -157,7 +157,7 @@ app.use(restlog({
 
       } else if (resource === "PUT /api/v1/user/:id" && response.status === 200)) {
         const { body: attrs, params } = request
-        notifyUserUpdateToOtherApi(id, attrs)
+        notifyUserUpdateToOtherApi(params.id, attrs)
 
       }
     }
