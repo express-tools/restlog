@@ -1,12 +1,78 @@
 
 ![rest.log](Logo3.jpg "logo")
 
-API Logger
-===
-
 
 Designed to help log request-response pair integrate with express middleware
 Example to Log with aws firehose
+
+
+API Logger
+===
+* [Install and Prerequisites](##Install)
+* [How use it](##How-use-it)
+  - Init middleware
+  - Event schema
+* [Examples](##Examples)
+  - Aws Athena
+  - Events
+* [Notes](##Notes)
+* [Roadmap](##Roadmap)
+
+
+
+
+## Install
+```shell
+$ npm install restlog --save
+```
+
+## How use it
+
+### Init Middleware
+```javascript
+const app = require("express")()
+const restlog = require("restlog")
+
+app.use(restlog({
+
+  // Array of reject patterns in url
+  rejectPatterns: [ /.ico/ ],
+
+  // extracts from request or response and add to Event
+  extracts: {
+    isBot: (req, res) => isBot(req.headers['user-agent'])
+  },
+  // Array with each output of log desired
+  logIn: [
+    // log in stdOut
+    event => console.log(event),
+  ]
+}))
+```
+### Event Schema
+```json
+{
+  "path": String,
+  "request": { 
+
+  },
+  "response": {
+
+  }
+}
+```
+
+* path
+* request
+  - headers
+  - body
+
+* response
+  - headers
+  - status
+  - body
+
+## Examples
 
 ```javascript
 
@@ -91,3 +157,11 @@ app.listen(3000, "localhost", () => {
 In Aws Athena...
 
 ![athena query](Screenshot3.png "athena show aggregation")
+## Notes
+* **Rest.log** was writen in 6.\x.\x node version and uses features available from this release.
+* **Rest.log** was writen to work with expressjs.
+
+## Roadmap
+* refac code in modules
+* test coverage in 70%
+
