@@ -20,17 +20,16 @@ describe("success response", () => {
       }
     ]
   })
+  
+  let app = require("../support/app-example")(middleware)
 
   context("json response", () => {
 
-    let app, res
+    let res
 
     before(async () => {
 
       currentEvent = null
-      app = require("../support/app-example")(middleware)
-
-      // app = require("../support/app-example")()
       res = await request(app).get("/api/v1/test/123")
     })
 
@@ -55,16 +54,11 @@ describe("success response", () => {
 
   context("no content response", () => {
 
-    let app, res
+    let res
 
     before(async () => {
       currentEvent = null
-      
-      app = require("../support/app-example")(middleware)
-      // app = require("../support/app-example")()
-
       res = await request(app).get("/api/v1/test/123/end")
-
     })
 
     describe("response", () => {
