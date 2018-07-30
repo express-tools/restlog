@@ -4,7 +4,7 @@
   "description": "Logger middleware to request/response",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "middleware",
@@ -15,11 +15,14 @@
   "devDependencies": {
     "aws-sdk": "^2.278.1",
     "axios": "^0.18.0",
+    "chai": "^4.1.2",
     "express": "^4.16.3",
-    "flat": "^4.1.0"
+    "flat": "^4.1.0",
+    "isbot": "^2.1.2",
+    "mocha": "^5.2.0",
+    "supertest": "^3.1.0"
   },
   "dependencies": {
-    "isbot": "^2.1.2",
-    "underscore": "^1.9.1"
+    "lodash": "^4.17.10"
   }
 }
