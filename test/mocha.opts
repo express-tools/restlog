@@ -1,0 +1,4 @@
+--slow 20
+--growl
+--recursive
+--reporter spec

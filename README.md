@@ -258,4 +258,12 @@ Afetr query in Aws Athena...
 ## Roadmap
 * Refac code in modules
 * Test coverage in 70%
+  - all http methods
+  - content empty
+  - all express response methods
+    * res.sendFile()
+    * res.download()
+    * res.render()
+    * res.sendStatus()
+    * res.redirect()
 
