@@ -21,16 +21,17 @@ describe("success response", () => {
     ]
   })
   
-  let app = require("../support/app-example")(middleware)
+  const app = require("../support/app-example")(middleware)
+  // const app = require("../support/app-example")()
 
-  context("json response", () => {
+  describe("redirect()", () => {
+  
 
     let res
 
     before(async () => {
-
       currentEvent = null
-      res = await request(app).get("/api/v1/test/123")
+      res = await request(app).get("/api/v1/test/123/redirect")
     })
 
     describe("response", () => {
@@ -51,14 +52,71 @@ describe("success response", () => {
     })
   })
 
+  describe("json()", () => {
 
-  context("no content response", () => {
+    let res
+
+    before(async () => {
+
+      currentEvent = null
+      res = await request(app).get("/api/v1/test/123/json")
+    })
+
+    describe("response", () => {
+      it("status should be equal", () => {
+        expect(res.status).to.be.equal(currentEvent.response.status)
+      })
+  
+      it("body should be equal", () => {
+        expect(res.text).to.be.eql(
+          currentEvent.response.body
+        )
+      })
+  
+      it("headers should be equal", () => {
+        const headers = _.omit(res.headers, "connection")
+        expect(headers).to.be.eql(currentEvent.response.headers)
+      })
+    })
+  })
+
+  describe("sendFile()", () => {
+
+    let res
+
+    before(async () => {
+
+      currentEvent = null
+      res = await request(app).get("/api/v1/test/123/sendFile")
+      await new Promise(resolve => setTimeout(resolve, 1000))
+    })
+
+    describe("response", () => {
+      it("status should be equal", () => {
+        expect(res.status).to.be.equal(currentEvent.response.status)
+      })
+  
+      it("body should be equal", () => {
+        expect(res.body).to.be.eql(
+          currentEvent.response.body
+        )
+      })
+  
+      it("headers should be equal", () => {
+        const headers = _.omit(res.headers, "connection")
+        expect(headers).to.be.eql(currentEvent.response.headers)
+      })
+    })
+  })
+
+
+  describe("sendStatus()", () => {
 
     let res
 
     before(async () => {
       currentEvent = null
-      res = await request(app).get("/api/v1/test/123/end")
+      res = await request(app).get("/api/v1/test/123/sendStatus")
     })
 
     describe("response", () => {
