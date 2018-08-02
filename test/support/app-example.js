@@ -6,6 +6,9 @@ module.exports = (middlewares = null) => {
 
   if (middlewares)
     app.use(middlewares)
+  
+  app.set('views', __dirname + '/views');
+  app.engine('html', require('ejs').renderFile)
 
   app.get("/api/v1/test/:id", (req, res) => {
     setTimeout(() =>
@@ -29,6 +32,10 @@ module.exports = (middlewares = null) => {
 
   app.get("/api/v1/test/:id/redirect", (req, res) => {
     res.redirect("http://google.com")
+  })
+
+  app.get("/api/v1/test/:id/render", (req, res) => {
+    res.render("index.html")
   })
 
 
