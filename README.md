@@ -263,7 +263,7 @@ Afetr query in Aws Athena...
   - all express response methods
     * ~~res.json()~~
     * ~~res.sendFile()~~
-    * res.download()
+    * ~~res.download()~~
     * res.render()
     * ~~res.sendStatus()~~
     * ~~res.redirect()~~

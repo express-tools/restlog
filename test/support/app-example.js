@@ -36,6 +36,10 @@ module.exports = (middlewares = null) => {
     res.sendFile(`${__dirname}/Logo3.jpg`)
   })
 
+  app.get("/api/v1/test/:id/download", (req, res) => {
+    res.download(`${__dirname}/Logo3.jpg`)
+  })
+
 
   app.put("/api/v1/test/:id", (req, res) => {
     setTimeout(() =>
