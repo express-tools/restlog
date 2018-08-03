@@ -267,4 +267,4 @@ Afetr query in Aws Athena...
     * ~~res.render()~~
     * ~~res.sendStatus()~~
     * ~~res.redirect()~~
-  - express errors 404 etc
+  - ~~express errors 404~~
