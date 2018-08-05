@@ -1,5 +1,5 @@
 {
-  "name": "api-logger",
+  "name": "rest.log",
   "version": "1.0.0",
   "description": "Logger middleware to request/response",
   "main": "index.js",
